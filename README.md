@@ -1,2 +1,3 @@
-# ibslotto
-IBsolution lotto game
+# Prisma2 With Turbo repo
+Node api
+
