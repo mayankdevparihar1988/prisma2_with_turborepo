@@ -14,7 +14,7 @@
       "env": {
         "ISLOCALENV": "local",
         "PORT": "8081",
-        "DB_URI": "mongodb+srv://2EVMejL797aW:MQEdw5erck98Z7JdDSQXTa5g@ibsprvcluster.pbo7w.mongodb.net/ibslotto-dev?retryWrites=true&w=majority"
+        "DB_URI": ""
       },
       "outFiles": ["${workspaceFolder}/**/*.js"]
     },
@@ -27,7 +27,7 @@
       "env": {
         "ISLOCALENV": "local",
         "PORT": "8081",
-        "DB_URI": "mongodb+srv://2EVMejL797aW:MQEdw5erck98Z7JdDSQXTa5g@ibsprvcluster.pbo7w.mongodb.net/ibslotto-dev?retryWrites=true&w=majority"
+        "DB_URI": ""
       },
       "outFiles": ["${workspaceFolder}/**/*.js"]
     }
