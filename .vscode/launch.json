@@ -1,0 +1,35 @@
+{
+  // Verwendet IntelliSense zum Ermitteln möglicher Attribute.
+  // Zeigen Sie auf vorhandene Attribute, um die zugehörigen Beschreibungen anzuzeigen.
+  // Weitere Informationen finden Sie unter https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "Launch App",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/apps/api/src/app.ts",
+      "env": {
+        "ISLOCALENV": "local",
+        "PORT": "8081",
+        "DB_URI": "mongodb+srv://2EVMejL797aW:MQEdw5erck98Z7JdDSQXTa5g@ibsprvcluster.pbo7w.mongodb.net/ibslotto-dev?retryWrites=true&w=majority"
+      },
+      "outFiles": ["${workspaceFolder}/**/*.js"]
+    },
+    {
+      "type": "pwa-node",
+      "request": "launch",
+      "name": "LauncTestFile",
+      "skipFiles": ["<node_internals>/**"],
+      "program": "${workspaceFolder}/apps/api/src/getAllGameToComplete.ts",
+      "env": {
+        "ISLOCALENV": "local",
+        "PORT": "8081",
+        "DB_URI": "mongodb+srv://2EVMejL797aW:MQEdw5erck98Z7JdDSQXTa5g@ibsprvcluster.pbo7w.mongodb.net/ibslotto-dev?retryWrites=true&w=majority"
+      },
+      "outFiles": ["${workspaceFolder}/**/*.js"]
+    }
+  ]
+}

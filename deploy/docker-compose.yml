@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  lotto-api:
+    build:
+      context: ../
+      dockerfile: deploy/Dockerfile.api
+    image: registry.ibsolution.cloud/lotto/lotto-api:${SOURCE_TAG}
+  lotto-web:
+    build:
+      context: ../
+      dockerfile: deploy/Dockerfile.web
+    image: registry.ibsolution.cloud/lotto/lotto-web:${SOURCE_TAG}

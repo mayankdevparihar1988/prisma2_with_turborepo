@@ -1,0 +1,9 @@
+{
+  "extends": "./base.json",
+  "compilerOptions": {
+    "incremental": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "module": "es2022"
+  }
+}

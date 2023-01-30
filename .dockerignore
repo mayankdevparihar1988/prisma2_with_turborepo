@@ -1,0 +1,14 @@
+build
+dist
+.github
+.vscode
+.buildcache
+.eslintrc
+.editorconfig
+.dockerignore
+*.md
+node_modules
+*.code-workspace
+deploy
+!deploy/etc
+.env*

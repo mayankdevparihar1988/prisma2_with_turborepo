@@ -1,0 +1,32 @@
+{
+    "editor.formatOnSave": false,
+    "files.exclude": {
+        "**/.DS_Store": true,
+        "**/node_modules/": true,
+        "packages/**/node_modules/": true
+    },
+    "search.exclude": {
+        "lib": true,
+        "build": true,
+        "node_modules": true
+    },
+    "eslint.validate": [
+        "typescript",
+        "javascript"
+    ],
+    "[json]": {
+        "editor.formatOnSave": true,
+    },
+    "[html]": {
+        "editor.formatOnSave": true,
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+        "source.fixAll.tslint": false
+    },
+    "eslint.workingDirectories": [
+        { "pattern": "./packages/*/" },
+        { "pattern": "./libs/*/" },
+        { "pattern": "./apps/*/" }
+    ]
+}

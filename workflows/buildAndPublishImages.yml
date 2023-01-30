@@ -1,0 +1,39 @@
+name: build-and-publish-image
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'build-and-publish-image base tag'
+        required: true
+        default: '0.1.0'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set TAG
+        id: set-tag
+        run: echo ::set-output name=SOURCE_TAG::${{ github.event.inputs.tag }}
+
+      - name: Build images
+        env:
+          SOURCE_TAG: ${{ steps.set-tag.outputs.SOURCE_TAG }}
+        run: |
+          docker-compose -f deploy/docker-compose.yml build --force-rm --no-cache
+
+      - name: Login to IBsoltion Cloud Docker Registry
+        uses: docker/login-action@v1
+        with:
+          registry: registry.ibsolution.cloud
+          username: hub
+          password: ${{ secrets.REGISTRY_HUB_KEY }}
+
+      - name: Push build packages
+        env:
+          SOURCE_TAG: ${{ steps.set-tag.outputs.SOURCE_TAG }}
+        run: |
+          docker-compose -f deploy/docker-compose.yml push

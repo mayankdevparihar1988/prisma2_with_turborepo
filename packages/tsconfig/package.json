@@ -1,0 +1,14 @@
+{
+  "name": "tsconfig",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.js",
+  "files": [
+    "base.json",
+    "ui.json",
+    "api.json"
+  ],
+  "dependencies": {
+    "@tsconfig/node16": "^1.0.3"
+  }
+}

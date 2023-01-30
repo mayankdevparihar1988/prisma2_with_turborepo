@@ -1,1 +1,2 @@
-# prisma2_with_turborepo
+# ibslotto
+IBsolution lotto game

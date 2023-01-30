@@ -1,0 +1,1 @@
+ignores: ["source-map-support", "eslint", "prettier-eslint", "typescript", "microbundle", "rimraf", "tsconfig", "eslint-import-resolver-typescript"]

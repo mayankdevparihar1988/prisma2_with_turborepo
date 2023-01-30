@@ -1,0 +1,14 @@
+{
+  "extends": "tsconfig/api.json",
+  "include": ["src"],
+  "compilerOptions": {
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "tsBuildInfoFile": ".buildcache/api.tsbuildinfo",
+    "sourceMap": true
+  },
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
+}

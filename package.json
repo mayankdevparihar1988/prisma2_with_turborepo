@@ -1,0 +1,33 @@
+{
+  "name": "root",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "packages/*",
+    "libs/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "build:api": "turbo run build --filter=@ibs-lotto/api --include-dependencies",
+    "build:web": "turbo run build --filter=@ibs-lotto/ui --include-dependencies",
+    "lint": "turbo run lint",
+    "pack": "turbo run pack",
+    "check": "turbo run check",
+    "clean": "turbo run clean"
+  },
+  "devDependencies": {
+    "dotenv": "latest",
+    "eslint-config-custom": "latest",
+    "eslint-config-custom-ui": "latest",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "turbo": "latest"
+  },
+  "engines": {
+    "npm": ">=8.11.0",
+    "node": ">=16.15.0"
+  },
+  "packageManager": "npm@8.11.0",
+  "dependencies": {}
+}
