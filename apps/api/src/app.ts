@@ -3,12 +3,10 @@ import { config as dotEnvConfig } from 'dotenv';
 import compression from 'compression';
 import morgan from 'morgan';
 import { Server } from 'http';
-import { toNumber } from 'lodash-es';
 import { initCors, initBasicSecurity } from './middleware/security.js';
 import { initGraphQlSubscriptions, initGraphQl } from './middleware/graphql.js';
 import { connectDb } from './middleware/mongo.js';
-import { gameTickEvery15Minute, gameTickEveryMinute } from './appTicks.js';
-import { EVENT_TIME_DURATION } from './config/gameSettings.js';
+import { bindRoutes } from './middleware/router.js';
 
 dotEnvConfig();
 const PORT: string = process.env.PORT || '8081';
@@ -18,23 +16,6 @@ const app: Application = express();
 
 // eslint-disable-next-line import/no-mutable-exports
 export let server: Server;
-
-const SEK_INTERVAL = 1000; // 1 sek
-
-const tick1MinService = async () =>
-  new Promise(() => {
-    gameTickEveryMinute().then(() => {
-      setInterval(gameTickEveryMinute, SEK_INTERVAL);
-    });
-  });
-
-const tick15MinService = async () =>
-  new Promise(() => {
-    gameTickEvery15Minute().then(() => {
-      setInterval(gameTickEvery15Minute, SEK_INTERVAL * 60 * EVENT_TIME_DURATION + 1); // every 15 min
-    });
-  });
-
 const serverInitialize = async () => {
   app.use(morgan(MORGAN_LOG_TYPE));
   app.use(compression());
@@ -48,7 +29,7 @@ const serverInitialize = async () => {
   });
 
   // routes
-  // bindRoutes(app);
+  bindRoutes(app);
 
   await connectDb();
   const grapqhlServer = initGraphQl(app);
@@ -60,6 +41,6 @@ const serverInitialize = async () => {
   });
 };
 
-await Promise.all([tick1MinService(), tick15MinService(), serverInitialize()]);
+serverInitialize();
 
 export default app;

@@ -1,12 +1,12 @@
 import { readFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, URL } from 'node:url';
 import { dirname, join } from 'node:path';
 import { inspect } from 'node:util';
 
 // eslint-disable-next-line no-underscore-dangle
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = dirname(fileURLToPath(new URL('.', import.meta.url)));
 
-const pkg = JSON.parse(readFileSync(join(__dirname, '/../../', 'package.json')).toString());
+const pkg = JSON.parse(readFileSync(join(__dirname, '/../../api/', 'package.json')).toString());
 
 export const API = {
   name: pkg.name,

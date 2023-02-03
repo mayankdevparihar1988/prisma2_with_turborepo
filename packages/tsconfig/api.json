@@ -4,6 +4,6 @@
     "incremental": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "module": "es2022"
+    "module": "ES2022"
   }
 }
