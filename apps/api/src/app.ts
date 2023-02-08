@@ -4,8 +4,6 @@ import compression from 'compression';
 import morgan from 'morgan';
 import { Server } from 'http';
 import { initCors, initBasicSecurity } from './middleware/security.js';
-import { initGraphQlSubscriptions, initGraphQl } from './middleware/graphql.js';
-import { connectDb } from './middleware/mongo.js';
 import { bindRoutes } from './middleware/router.js';
 
 dotEnvConfig();
@@ -30,12 +28,7 @@ const serverInitialize = async () => {
 
   // routes
   bindRoutes(app);
-
-  await connectDb();
-  const grapqhlServer = initGraphQl(app);
-
   server = app.listen(PORT, (): void => {
-    initGraphQlSubscriptions(grapqhlServer, server);
     // eslint-disable-next-line no-console
     console.info(`Listening to port ${PORT}`);
   });
