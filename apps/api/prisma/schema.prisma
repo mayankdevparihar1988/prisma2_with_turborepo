@@ -8,25 +8,57 @@ datasource db {
 }
 
 model Joke {
-  id     String  @id
+  id     String  @id @default(uuid())
   text   String
-  userId String?
-  User   User?   @relation(fields: [userId], references: [id])
+  authorId String?
+  User   Author?   @relation(fields: [authorId], references: [id])
 }
 
-model User {
-  id   String @id
+model Author {
+  id   String @id @default(uuid())
   name String
   email String @unique
-  posts Post[]
+  age Int
+  role Role @default(BASIC)
+  writtenPosts  Post[] @relation("WrittenPosts")
+  favoritePosts Post[] @relation("FavoritePosts")
   Joke Joke[]
+  userPreference UserPreference?
+
+  @@unique([email, name])
+  @@index([email,name])
+}
+
+model UserPreference {
+  id String @id @default(uuid())
+  emailUpdates Boolean
+  user Author @relation(fields: [userId], references: [id])
+  userId String @unique
 }
 
 model Post {
   id        Int     @id @default(autoincrement())
   title     String
+  averageRating Float
   content   String
   published Boolean
-  user      User    @relation(fields: [userId], references: [id])
-  userId    String
+  author      Author    @relation("WrittenPosts",fields: [authorId], references: [id])
+  authorId    String
+  favoritedBy Author?    @relation("FavoritePosts", fields: [favoritedById], references: [id])
+  favoritedById String?
+  categories Category[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Category {
+  id String @id @default(uuid())
+  name String @unique
+  posts Post[]
+}
+
+enum Role {
+  BASIC
+  ADMIN
+  EDITOR
 }
