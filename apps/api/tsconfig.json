@@ -1,6 +1,6 @@
 {
   "extends": "tsconfig/api.json",
-  "include": ["src"],
+  "include": ["src", "prisma"],
   "compilerOptions": {
     "outDir": "dist",
     "esModuleInterop": true,

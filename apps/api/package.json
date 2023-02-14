@@ -15,6 +15,9 @@
       ]
     }
   },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "scripts": {
     "clean:build": "rimraf dist",
     "clean:build:cache": "rimraf build .buildcache",
@@ -25,36 +28,26 @@
     "lint:fix": "eslint --fix --ext .ts src/",
     "start": "node -r source-map-support/register --max_old_space_size=260 dist/app.js",
     "dev": "nodemon --trace-warnings -r source-map-support/register build/app.js",
-    "game:complete": "node -r source-map-support/register --max_old_space_size=460 dist/completeGameProcess.js",
-    "game:create": "node -r source-map-support/register --max_old_space_size=460 dist/createGameProcess.js",
-    "game:automate": "concurrently \"npm run game:create \" \"npm run game:complete\"",
-    "game:active:delete": "node -r source-map-support/register --max_old_space_size=460 dist/deleteAllActiveGames.js",
-    "game:complete:delete": "node -r source-map-support/register --max_old_space_size=460 dist/deleteAllCompletedGames.js",
-    "game:gameToComplete": "node -r source-map-support/register --max_old_space_size=460 dist/getAllGameToComplete.js",
+    "generate": "npx prisma generate",
+    "db:migrate": "npx prisma migrate dev --name first-migration --skip-seed",
+    "db:seed": "node --loader ts-node/esm prisma/seed.ts",
     "depcheck": "npx depcheck"
   },
   "dependencies": {
+    "@prisma/client": "^4.10.0",
     "@schamane/serial-exec": "^2.0.2",
-    "@schamane/small-graphql-mongoose-middleware": "1.0.6",
-    "apollo-server-express": "v2",
     "compression": "^1.7.4",
     "concurrently": "^7.4.0",
     "cors": "^2.8.5",
     "date-fns": "^2.29.3",
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
-    "graphql": "15.x.x",
-    "graphql-tools": "^8.3.6",
-    "graphql-type-json": "^0.3.2",
     "helmet": "^6.0.0",
     "lodash-es": "^4.17.21",
-    "mongoose": "^6.6.1",
     "morgan": "^1.10.0",
     "nanoid": "^4.0.0",
     "passport": "^0.6.0",
     "passport-forward-auth": "^1.1.1",
-    "react-chartjs-2": "^4.3.1",
-    "react-charts": "^3.0.0-beta.48",
     "source-map-support": "^0.5.21",
     "undici": "^5.10.0"
   },
@@ -67,16 +60,18 @@
     "@types/lodash": "^4.14.185",
     "@types/lodash-es": "^4.17.6",
     "@types/morgan": "^1.9.3",
-    "@types/node": "^18.7.18",
+    "@types/node": "^18.13.0",
     "@types/passport": "^1.0.11",
     "@types/styled-components": "^5.1.26",
     "eslint": "8.23.1",
     "eslint-config-custom": "*",
     "nodemon": "^2.0.20",
     "prettier-eslint": "^15.0.1",
+    "prisma": "^4.10.0",
     "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1",
     "tsconfig": "*",
-    "typescript": "^4.8.3"
+    "typescript": "^4.9.5"
   },
   "nodemonConfig": {
     "ignore": [
