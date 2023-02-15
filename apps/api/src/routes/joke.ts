@@ -14,4 +14,10 @@ app.get('/list', async (req, res): Promise<void> => {
   const jokes = await jokeBl.getList();
   res.send(jokes);
 });
+/*
+app.post('/', async (req, res): Promise<void> => {
+  const jokeBl = new JokeBl();
+  const joke = await jokeBl.res.send(jokes);
+});
+*/
 export const JokeRoute: Application = app;

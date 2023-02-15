@@ -3,46 +3,45 @@ import { uniqueId } from 'lodash-es';
 
 const prisma = new PrismaClient();
 async function main() {
-  const alice = await prisma.user.upsert({
+  const alice = await prisma.author.upsert({
     where: { email: 'alice@prisma.io' },
     update: {},
     create: {
       id: uniqueId('user'),
       email: 'alice@prisma.io',
       name: 'Alice',
-      posts: {
+      age: 33,
+      Joke: {
         create: {
-          title: 'Check out Prisma with Next.js',
-          content: 'https://www.prisma.io/nextjs',
-          published: true
+          text: 'Check out Prisma with Next.js'
         }
       }
     }
   });
-  const bob = await prisma.user.upsert({
+
+  console.log(alice);
+
+  const bob = await prisma.author.upsert({
     where: { email: 'bob@prisma.io' },
     update: {},
     create: {
       id: uniqueId('user'),
       email: 'bob@prisma.io',
       name: 'Bob',
-      posts: {
+      age: 22,
+      Joke: {
         create: [
           {
-            title: 'Follow Prisma on Twitter',
-            content: 'https://twitter.com/prisma',
-            published: true
+            text: 'Follow Prisma on Twitter'
           },
           {
-            title: 'Follow Nexus on Twitter',
-            content: 'https://twitter.com/nexusgql',
-            published: true
+            text: 'Follow Nexus on Twitter'
           }
         ]
       }
     }
   });
-  console.log({ alice, bob });
+  console.log({ bob });
 }
 main()
   .then(async () => {

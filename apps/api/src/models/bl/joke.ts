@@ -1,8 +1,8 @@
-import { User } from './user.js';
+import { Author } from './user.js';
 
 export interface Joke {
   id: string;
   text: string;
-  userId?: string;
-  User?: User;
+  authorId: string;
+  Author?: Author;
 }

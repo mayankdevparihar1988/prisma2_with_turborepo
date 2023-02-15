@@ -1,7 +1,7 @@
 import { Joke } from './joke.js';
 
-export interface User {
+export interface Author {
   id: string;
   name: string;
-  Joke?: Joke;
+  joke?: Joke[];
 }

@@ -2,7 +2,7 @@
     "editor.formatOnSave": false,
     "files.exclude": {
         "**/.DS_Store": true,
-        "**/node_modules/": true,
+        "**/node_modules/": false,
         "packages/**/node_modules/": true
     },
     "search.exclude": {
