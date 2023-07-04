@@ -1,5 +1,5 @@
 {
-  "name": "@ibs-lotto/kysely",
+  "name": "@my_repo/kysely",
   "version": "1.0.7",
   "description": "Node.js TypeScript Graphql API v1",
   "author": "Nazar Kulyk <nazar.kulyk@ibsolution.de>",
@@ -51,7 +51,8 @@
     "react-chartjs-2": "^4.3.1",
     "react-charts": "^3.0.0-beta.48",
     "source-map-support": "^0.5.21",
-    "undici": "^5.10.0"
+    "undici": "^5.10.0",
+    "@schamane/small-graphql-mongoose-middleware": "^1.1.0"
   },
   "devDependencies": {
     "@types/compression": "^1.7.2",

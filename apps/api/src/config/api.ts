@@ -6,7 +6,7 @@ import { inspect } from 'node:util';
 // eslint-disable-next-line no-underscore-dangle
 const __dirname = dirname(fileURLToPath(new URL('.', import.meta.url)));
 
-const pkg = JSON.parse(readFileSync(join(__dirname, '/../../api/', 'package.json')).toString());
+const pkg = JSON.parse(readFileSync(join(__dirname, '/../../../api/', 'package.json')).toString());
 
 export const API = {
   name: pkg.name,

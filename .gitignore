@@ -33,5 +33,5 @@ default-services.json
 .turbo
 build/**
 dist/**
-
+**/dist/**
 .buildcache

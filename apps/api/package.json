@@ -1,8 +1,8 @@
 {
-  "name": "@ibs-lotto/api",
-  "version": "1.0.7",
+  "name": "@my_repo/api",
+  "version": "1.0.0",
   "description": "Node.js TypeScript Graphql API v1",
-  "author": "Nazar Kulyk <nazar.kulyk@ibsolution.de>",
+  "author": "Mayank Parihar <mayank.parihar@ibsolution.de>",
   "repository": "git@github.com:ibsprv/ibslotto.git",
   "type": "module",
   "exports": {
@@ -26,7 +26,7 @@
     "watch": "npm run clean && tsc -w",
     "lint": "eslint --ext .ts src/",
     "lint:fix": "eslint --fix --ext .ts src/",
-    "start": "node -r source-map-support/register --max_old_space_size=260 dist/app.js",
+    "start": "node -r source-map-support/register --max_old_space_size=260 dist/src/app.js",
     "dev": "nodemon --trace-warnings -r source-map-support/register build/app.js",
     "generate": "npx prisma generate",
     "db:migrate": "npx prisma migrate dev --name first-migration --skip-seed",
@@ -49,7 +49,10 @@
     "passport": "^0.6.0",
     "passport-forward-auth": "^1.1.1",
     "source-map-support": "^0.5.21",
-    "undici": "^5.10.0"
+    "undici": "^5.10.0",
+    "@schamane/small-graphql-mongoose-middleware": "^1.1.0",
+    "@my_repo/common": "*",
+    "@my_repo/httpsdk": "*"
   },
   "devDependencies": {
     "@types/compression": "^1.7.2",
